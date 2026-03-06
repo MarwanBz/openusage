@@ -423,6 +423,14 @@ fn list_plugins(state: tauri::State<'_, Mutex<AppState>>) -> Vec<PluginMeta> {
 
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
+    #[cfg(target_os = "linux")]
+    {
+        // Require X11 thread init to prevent XCB crash from WebKit in async tasks
+        if let Err(e) = gtk::init() {
+            log::warn!("Failed to initialize GTK: {}", e);
+        }
+    }
+
     let runtime = tokio::runtime::Runtime::new().expect("Failed to create Tokio runtime");
     let _guard = runtime.enter();
 
