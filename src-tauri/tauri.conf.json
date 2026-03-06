@@ -17,8 +17,6 @@
         "width": 400,
         "height": 500,
         "resizable": false,
-        "decorations": false,
-        "transparent": true,
         "visible": false
       }
     ],
@@ -53,10 +51,7 @@
       "icons/icon.icns",
       "icons/icon.ico"
     ],
-    "resources": [
-      "resources/bundled_plugins/**/*",
-      "icons/tray-icon.png"
-    ],
+    "resources": ["resources/bundled_plugins/**/*", "icons/tray-icon.png"],
     "createUpdaterArtifacts": true
   },
   "plugins": {
